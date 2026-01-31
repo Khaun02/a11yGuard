@@ -1,33 +1,24 @@
-🛡️ A11yGuard
-AI-Powered Accessibility Remediation Engine
-A11yGuard is an enterprise-grade accessibility management platform designed to bridge the gap between manual auditing and technical remediation. It automates the lifecycle of WCAG 2.1 AA compliance by combining a robust Java Spring Boot backend with a generative AI engine to provide real-time code patches.
+# 🛡️ A11yGuard: Context-Aware Accessibility Remediation
 
-🚀 The Mission
-Manual accessibility auditing is slow and expensive. A11yGuard empowers developers and non-technical testers to identify, prioritize, and fix accessibility barriers instantly. By calculating a proprietary Risk Score, the platform helps organizations focus on the issues that matter most to users with disabilities.
+A11yGuard is a full-stack platform built to move accessibility audits out of static spreadsheets and into an actionable developer workflow. [cite_start]It centralizes WCAG 2.1 AA tracking and utilizes Generative AI to bridge the "remediation gap" by producing valid WAI-ARIA patches for identified barriers.
 
-✨ Key Features
-AI Code Remediation: Integrated with Google Gemini 2.5 Flash to analyze broken HTML/ARIA patterns and generate instant, context-aware code fixes.
+## 🛠️ Technical Implementation
 
-Dynamic Risk Scoring: Prioritizes issues using a custom algorithm weighing WCAG severity against page traffic impact.
+* **AI Remediation Engine**: Built a service layer around the **Google Gemini API** to parse specific audit failures (e.g., WCAG 1.1.1 or 4.1.2) and return structured HTML5/ARIA code blocks.
+* **Reactive Risk Scoring**: Developed a dashboard using **React 18** that calculates real-time compliance health using a weighted algorithm: Risk = Severity × Impact.
+* [cite_start]**Persistent Audit Queue**: Implemented a **RESTful Java API (Spring Boot)** to manage the lifecycle of an accessibility barrier from detection to verified fix[cite: 35, 37].
+* **Enterprise Auth**: Integrated **AWS Cognito** via AWS Amplify to manage secure session states and multi-tenant access.
 
-Enterprise Dashboard: A React-driven interface featuring real-time compliance analytics and barrier tracking.
+## 🚀 Problem Solving & Features
 
-Automated Reporting: Generates professional PDF compliance reports via the Java backend for stakeholders and legal teams.
+1. [cite_start]**Automated Barrier Tracking**: Replaced manual template-based documentation with a centralized relational database to manage asynchronous audit data[cite: 35, 37].
+2. [cite_start]**Contextual Code Patches**: Rather than generic advice, the system delivers specific "Before vs. After" code snapshots to help developers implement fixes faster[cite: 36].
+3. **Live Compliance Analytics**: Uses React's functional programming patterns (like `.reduce()`) to provide instant feedback on project risk as new audit data is ingested.
+4. [cite_start]**Stakeholder reporting**: Leverages the Java backend to generate automated PDF compliance reports for stakeholders and legal teams[cite: 37].
 
-Secure Authentication: Integrated with AWS Cognito for secure, scalable user management.
+## 📂 Architecture Stack
 
-🛠️ Tech Stack
-Frontend: React (Vite), Tailwind CSS, Lucide-React, AWS Amplify.
-
-Backend: Java 17, Spring Boot, Spring Data JPA, Spring Cloud AWS.
-
-AI/ML: Google Gemini API.
-
-Cloud/DevOps: AWS (App Runner, Cognito, S3, DynamoDB).
-
-Database: PostgreSQL / H2.
-
-📂 Repository Structure
-/ally-guard-ui: React frontend and Amplify configuration.
-
-/ally-guard-core: Java Spring Boot microservice (The "Brain").
+* **Frontend**: React (Vite), Tailwind CSS, Lucide-React.
+* [cite_start]**Backend**: Java 17, Spring Boot, Spring Data JPA[cite: 37, 43].
+* **Cloud**: AWS (Amplify, Cognito), Google Gemini API.
+* [cite_start]**Database**: PostgreSQL / H2 for persistent barrier tracking[cite: 37, 43].
