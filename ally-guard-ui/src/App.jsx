@@ -108,7 +108,7 @@ function Dashboard({ user, signOut }) {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {issues.map(issue => (
-                <tr key={issue.id} className="hover:bg-gray-50 transition">
+                <tr key={issue.id} className="hover:bg-blue-50/50 transition-colors duration-200 group">
                   <td className="p-4 font-mono text-xs text-blue-600">{issue.url}</td>
                   <td className="p-4 text-sm font-medium">{issue.criteria}</td>
                   <td className="p-4">
@@ -122,7 +122,7 @@ function Dashboard({ user, signOut }) {
                   <td className="p-4 text-right flex items-center justify-end gap-4">
                     <button 
                       onClick={() => setSelectedIssue(issue)}
-                      className="text-blue-600 hover:text-blue-800 text-sm font-bold flex items-center gap-1"
+                      className="text-blue-600 hover:text-blue-800 text-sm font-bold flex items-center gap-1 transition-transform hover:translate-x-1"
                     >
                       View AI Fix <ChevronRight size={14}/>
                     </button>

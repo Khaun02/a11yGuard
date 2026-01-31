@@ -9,12 +9,13 @@ export default function AddIssueModal({ isOpen, onClose, onAdd }) {
     severity: 'Major'
   });
 
+  // If the modal isn't open, we return null so nothing renders
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Calculate a mock score based on severity to keep our Risk Score dynamic
+    // Calculate a mock score based on severity to keep the Risk Score dynamic
     const scoreMap = { 'Critical': 9.5, 'Major': 7.0, 'Minor': 3.0 };
     
     onAdd({
@@ -23,21 +24,27 @@ export default function AddIssueModal({ isOpen, onClose, onAdd }) {
       score: scoreMap[formData.severity]
     });
 
-    // Reset and close
+    // Reset the form fields and close the modal
     setFormData({ url: '', criteria: '1.1.1 Non-text Content', severity: 'Major' });
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
+    /* The Background Overlay (Fade In + Blur) */
+    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-300">
+      
+      {/* The Modal Box (Scale and Slide Up animation) */}
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in slide-in-from-bottom-4 duration-300 ease-out">
         
         {/* Modal Header */}
         <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-blue-600 text-white">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <ShieldPlus size={24}/> Log New Barrier
           </h2>
-          <button onClick={onClose} className="hover:bg-blue-700 p-1 rounded-full transition">
+          <button 
+            onClick={onClose} 
+            className="hover:bg-blue-700 p-1 rounded-full transition-transform active:scale-90"
+          >
             <X size={20}/>
           </button>
         </div>
@@ -91,7 +98,7 @@ export default function AddIssueModal({ isOpen, onClose, onAdd }) {
 
           <button 
             type="submit" 
-            className="w-full bg-blue-600 text-white py-4 rounded-xl font-black text-lg shadow-lg hover:bg-blue-700 transition-all hover:-translate-y-1 active:scale-95 mt-4"
+            className="w-full bg-blue-600 text-white py-4 rounded-xl font-black text-lg shadow-lg hover:bg-blue-700 hover:-translate-y-1 active:scale-95 transition-all duration-200 mt-4"
           >
             Add to Queue
           </button>
